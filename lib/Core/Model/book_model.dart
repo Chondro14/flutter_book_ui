@@ -44,19 +44,21 @@ class BookModel {
       this.isFavorited = false});
 
   factory BookModel.fromJson(Map<String, dynamic> json) => BookModel(
-        id: json["id"],
-        title: json["title"],
+        id: json["id"] ?? 0,
+        title: json["title"] ?? "",
         authors:
-            List<Author>.from(json["authors"].map((x) => Author.fromJson(x))),
+            List<Author>.from(json["authors"].map((x) => Author.fromJson(x))) ??
+                [],
         translators: List<Author>.from(
-            json["translators"].map((x) => Author.fromJson(x))),
-        subjects: List<String>.from(json["subjects"].map((x) => x)),
-        bookshelves: List<String>.from(json["bookshelves"].map((x) => x)),
-        languages: List<String>.from(json["languages"]),
-        copyright: json["copyright"],
+                json["translators"].map((x) => Author.fromJson(x))) ??
+            [],
+        subjects: List<String>.from(json["subjects"].map((x) => x)) ?? [],
+        bookshelves: List<String>.from(json["bookshelves"].map((x) => x)) ?? [],
+        languages: List<String>.from(json["languages"]) ?? [],
+        copyright: json["copyright"] ?? false,
         mediaType: json["media_type"] ?? "",
         formats: Formats.fromJson(json["formats"]),
-        downloadCount: json["download_count"],
+        downloadCount: json["download_count"] ?? 0,
       );
 
   Map<String, dynamic> toJson() => {
@@ -86,9 +88,9 @@ class Author {
   });
 
   factory Author.fromJson(Map<String, dynamic> json) => Author(
-        name: json["name"],
-        birthYear: json["birth_year"],
-        deathYear: json["death_year"],
+        name: json["name"] ?? "",
+        birthYear: json["birth_year"] ?? 0,
+        deathYear: json["death_year"] ?? 0,
       );
 
   Map<String, dynamic> toJson() => {
@@ -126,17 +128,18 @@ class Formats {
   });
 
   factory Formats.fromJson(Map<String, dynamic> json) => Formats(
-        textHtml: json["text/html"],
-        applicationEpubZip: json["application/epub+zip"],
-        applicationXMobipocketEbook: json["application/x-mobipocket-ebook"],
-        applicationRdfXml: json["application/rdf+xml"],
-        imageJpeg: json["image/jpeg"],
-        textPlainCharsetUsAscii: json["text/plain; charset=us-ascii"],
-        applicationOctetStream: json["application/octet-stream"],
-        textHtmlCharsetUtf8: json["text/html; charset=utf-8"],
-        textPlainCharsetUtf8: json["text/plain; charset=utf-8"],
-        textPlainCharsetIso88591: json["text/plain; charset=iso-8859-1"],
-        textHtmlCharsetIso88591: json["text/html; charset=iso-8859-1"],
+        textHtml: json["text/html"] ?? "",
+        applicationEpubZip: json["application/epub+zip"] ?? "",
+        applicationXMobipocketEbook:
+            json["application/x-mobipocket-ebook"] ?? "",
+        applicationRdfXml: json["application/rdf+xml"] ?? "",
+        imageJpeg: json["image/jpeg"] ?? "",
+        textPlainCharsetUsAscii: json["text/plain; charset=us-ascii"] ?? "",
+        applicationOctetStream: json["application/octet-stream"] ?? "",
+        textHtmlCharsetUtf8: json["text/html; charset=utf-8"] ?? "",
+        textPlainCharsetUtf8: json["text/plain; charset=utf-8"] ?? "",
+        textPlainCharsetIso88591: json["text/plain; charset=iso-8859-1"] ?? "",
+        textHtmlCharsetIso88591: json["text/html; charset=iso-8859-1"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {

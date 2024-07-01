@@ -19,4 +19,10 @@ class GetStreamSearchBookState extends SearchState {
   List<Object?> get props => [stream];
 }
 
-class GetFailedSearchState extends SearchState {}
+class GetFailedSearchState extends SearchState {
+  final String message;
+  const GetFailedSearchState({required this.message});
+  @override
+  // TODO: implement props
+  List<Object?> get props => [message];
+}

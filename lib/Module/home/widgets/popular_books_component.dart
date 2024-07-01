@@ -44,6 +44,7 @@ class _PopularBooksComponentState extends State<PopularBooksComponent> {
               height: 256,
               child:
                   BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
+                print("Popular state $state");
                 if (state is LoadingHomeState) {
                   return Skeletonizer(
                     enabled: true,

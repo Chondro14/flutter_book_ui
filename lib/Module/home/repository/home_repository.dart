@@ -28,6 +28,7 @@ class HomeRepository extends HomeUseCase {
         query: query,
         topics: topics,
         sort: sort,
-        languages: languages);
+        languages: languages,
+        page: page);
   }
 }

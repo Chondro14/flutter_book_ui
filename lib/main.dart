@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_library_book/Module/home/bloc/cubit/home_cubit.dart';
 import 'package:flutter_library_book/Module/home/bloc/cubit/popular_cubit.dart';
+import 'package:flutter_library_book/Module/search/bloc/cubit/search_cubit.dart';
 import 'package:flutter_library_book/Module/tabbar/view/tabbar_view.dart';
 
 void main() {
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => HomeCubit()),
-        BlocProvider(create: (_) => PopularCubit())
+        BlocProvider(create: (_) => PopularCubit()),
+        BlocProvider(create: (_) => SearchCubit())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

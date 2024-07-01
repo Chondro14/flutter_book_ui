@@ -6,7 +6,7 @@ class RatingBar extends StatelessWidget {
 
   Widget ratingIndex(double score) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: List.generate(score.floor(), (index) {
             return Icon(
               Icons.star,

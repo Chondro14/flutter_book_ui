@@ -27,7 +27,7 @@ class PopularCubit extends Cubit<PopularState> {
           sort: sort,
           query: query,
           languages: languages,
-          page: page);
+          page: pageIndex);
       books.addAll(data.results.results ?? []);
       var stream = Stream<List<BookModel>>.value(books);
       emit(GetSuccessBookHomeState(stream: stream));
@@ -50,7 +50,7 @@ class PopularCubit extends Cubit<PopularState> {
           sort: sort,
           query: query,
           languages: languages,
-          page: page);
+          page: pageIndex);
       books.addAll(data.results.results ?? []);
       var stream = Stream<List<BookModel>>.value(books);
       emit(GetSuccessBookHomeState(stream: stream));

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_library_book/Module/favorite/view/favorite_view.dart';
+import 'package:flutter_library_book/Module/home/bloc/cubit/popular_cubit.dart';
 import 'package:flutter_library_book/Module/home/view/home_view.dart';
 
 class TabBarDasboardView extends StatefulWidget {
@@ -41,6 +43,9 @@ class _TabBarDasboardViewState extends State<TabBarDasboardView> {
           setState(() {
             currentIndex = value;
           });
+          if (value != 0) {
+            context.read<PopularCubit>().pageIndex = 1;
+          }
         },
       ),
     );

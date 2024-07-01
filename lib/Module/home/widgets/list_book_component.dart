@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_library_book/Core/Model/book_model.dart';
 import 'package:flutter_library_book/Module/home/bloc/cubit/popular_cubit.dart';
-import 'package:flutter_library_book/Module/home/widgets/book_horizontal_component.dart';
+import 'package:flutter_library_book/Core/widget/book_horizontal_component.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:http/http.dart' as http;
 
@@ -40,6 +40,7 @@ class _ListBookComponetState extends State<ListBookComponet> {
             height: 12,
           ),
           BlocBuilder<PopularCubit, PopularState>(builder: (context, state) {
+            print("State english $state");
             if (state is LoadingPopularState) {
               return Skeletonizer(
                 enabled: true,

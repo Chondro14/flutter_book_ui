@@ -10,13 +10,16 @@ class BookHorizontalComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),
       child: Row(
         children: [
           CachedNetworkImage(
             imageUrl: bookModel?.formats.imageJpeg ?? "",
             width: 90,
             height: 120,
+            errorWidget: (context, url, value) {
+              return Icon(Icons.settings);
+            },
           ),
           const SizedBox(
             width: 16,
@@ -31,12 +34,16 @@ class BookHorizontalComponent extends StatelessWidget {
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                       color: Colors.black),
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(
                   height: 4,
                 ),
                 Text(
-                  bookModel?.authors[0].name ?? "",
+                  bookModel!.authors.isEmpty
+                      ? ""
+                      : bookModel?.authors[0].name ?? "",
                   style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w400,

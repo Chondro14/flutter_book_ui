@@ -14,6 +14,7 @@ class SearchService {
       String? languages,
       int? page = 1}) async {
     var url = urlQuery(topics, sort, query, languages, page);
+    print(url);
     var response = await client.get(Uri.parse(url));
     try {
       if (response.statusCode == 200) {
